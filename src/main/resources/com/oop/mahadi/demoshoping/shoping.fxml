@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.mahadi.demoshoping.ShopingController">
+   <children>
+      <Label layoutX="23.0" layoutY="57.0" text="Select product" />
+      <ComboBox fx:id="productComboBoxfxid" layoutX="111.0" layoutY="53.0" onAction="#productcombowboxonaction" prefWidth="150.0" />
+      <Label layoutX="18.0" layoutY="96.0" text="Unit price bdt" />
+      <Label layoutX="61.0" layoutY="136.0" text="Quantity" />
+      <Label layoutX="9.0" layoutY="175.0" text="Predefine vat %%" />
+      <TextField fx:id="showpricefxid" layoutX="112.0" layoutY="92.0" />
+      <ComboBox fx:id="quantityfxid" layoutX="112.0" layoutY="132.0" prefWidth="150.0" />
+      <TextField fx:id="vatfxid" layoutX="112.0" layoutY="171.0" />
+      <Button layoutX="300.0" layoutY="53.0" mnemonicParsing="false" onAction="#addbuttononclick" prefHeight="160.0" prefWidth="52.0" text="Add &#10;&#10;product to cart" />
+      <Button layoutX="435.0" layoutY="40.0" mnemonicParsing="false" onAction="#chackoutbuttononclick" prefHeight="160.0" prefWidth="52.0" text="Chackout" />
+      <TableView fx:id="tableviewfxid" layoutX="61.0" layoutY="223.0" prefHeight="160.0" prefWidth="483.0">
+        <columns>
+          <TableColumn fx:id="a" prefWidth="75.0" text="Product" />
+          <TableColumn fx:id="b" prefWidth="75.0" text="unitprice" />
+            <TableColumn fx:id="c" prefWidth="75.0" text="Quality" />
+            <TableColumn fx:id="d" prefWidth="75.0" text="vat" />
+            <TableColumn fx:id="e" prefWidth="75.0" text="VAt amount" />
+            <TableColumn fx:id="f" prefWidth="75.0" text="Tolal amount" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
