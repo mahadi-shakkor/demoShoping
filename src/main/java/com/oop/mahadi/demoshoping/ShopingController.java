@@ -1,6 +1,7 @@
 package com.oop.mahadi.demoshoping;
 
 
+import java.io.*;
 import java.net.URL;
 import java.util.*;
 
@@ -55,7 +56,7 @@ public class ShopingController {
 HashMap<String,Cartitems> hs= new HashMap<>();
     @FXML
     void initialize() {
-
+        load_from_BinFile(arr2,"b.bin");
 //        this.product = product;
 //        this.price = price;
 //        this.quantity = quantity;
@@ -142,6 +143,122 @@ ArrayList<Cartitems> arr2=new ArrayList<>();
 
 
 
+
+    }
+    public void load_from_BinFile(ArrayList<Cartitems> com,String fileName) {
+
+        File f = new File(fileName);
+        ArrayList<Cartitems> ccc=new ArrayList<>();
+
+        if (f.exists()) {
+            try {
+                FileInputStream fios = new FileInputStream(f);
+                ObjectInputStream obfs = new ObjectInputStream(fios);
+
+                try {
+                    while (true) {
+                        Cartitems c = (Cartitems) obfs.readObject();
+                        // Display the object, for example, using System.out.println
+//                        System.out.println(c.toString());
+                        // Optionally, add the object to a list or update the UI
+                        com.add(c);
+                    }
+                } catch (EOFException e) {
+                    // End of file reached
+                } finally {
+                    obfs.close();
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace(); // Handle exceptions and print stack trace
+            }
+        }
+
+
+
+    }
+
+    @FXML
+    public void showfBin(ActionEvent actionEvent) {
+        File f = new File("b.bin");
+        ArrayList<Cartitems> ccc=new ArrayList<>();
+
+        if (f.exists()) {
+            try {
+                FileInputStream fios = new FileInputStream(f);
+                ObjectInputStream obfs = new ObjectInputStream(fios);
+
+                try {
+                    while (true) {
+                        Cartitems c = (Cartitems) obfs.readObject();
+                        // Display the object, for example, using System.out.println
+//                        System.out.println(c.toString());
+                        // Optionally, add the object to a list or update the UI
+                        ccc.add(c);
+                    }
+                } catch (EOFException e) {
+                    // End of file reached
+                } finally {
+                    obfs.close();
+                }
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace(); // Handle exceptions and print stack trace
+            }
+        } else {
+            System.out.println("The file does not exist.");
+        }
+        tableviewfxid.getItems().clear();
+        if(!ccc.isEmpty()){
+
+            showAlert("Success","successfully load from bin file");
+            for(Cartitems c:ccc){
+
+
+                String x="";
+                Float p=1.0f;
+
+//                p=c.getPrice()+c.getPrice()*(15/100.0f);
+                tableviewfxid.getItems().add(new democlass(c.getName(),
+                        c.getPrice().toString(),
+                        c.getQuanlity().toString(),
+                        c.getVat().toString()
+                ));
+            }
+        }
+
+
+    }
+
+    @FXML
+    public void savetoB(ActionEvent actionEvent) {
+
+        File f = new File("b.bin");
+
+        try {
+            if (!f.exists()) {
+                f.createNewFile(); // Create a new blank binary file if it doesn't exist
+            }
+
+            FileOutputStream fios = new FileOutputStream(f);
+            ObjectOutputStream obfs = new ObjectOutputStream(fios);
+
+            for (Cartitems c : arr2) {
+                obfs.writeObject(c);
+            }
+
+            obfs.close();
+            showAlert("Done ","Successfully Saved to bin File");
+        } catch (IOException e) {
+            e.printStackTrace(); // Handle exceptions and print stack trace
+        }
+
+    }
+
+    private void showAlert(String title, String content){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
 
     }
 }

@@ -1,6 +1,8 @@
 package com.oop.mahadi.demoshoping;
 
-public class Cartitems {
+import java.io.Serializable;
+
+public class Cartitems implements Serializable {
     String name;
     Float price;
     Integer vat,quanlity;

@@ -8,7 +8,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
 <AnchorPane prefHeight="523.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.oop.mahadi.demoshoping.ShopingController">
    <children>
       <Label layoutX="23.0" layoutY="57.0" text="Select product" />
@@ -20,7 +19,7 @@
       <ComboBox fx:id="quantityfxid" layoutX="112.0" layoutY="132.0" prefWidth="150.0" />
       <TextField fx:id="vatfxid" layoutX="112.0" layoutY="171.0" />
       <Button layoutX="300.0" layoutY="53.0" mnemonicParsing="false" onAction="#addbuttononclick" prefHeight="160.0" prefWidth="52.0" text="Add &#10;&#10;product to cart" />
-      <Button layoutX="435.0" layoutY="40.0" mnemonicParsing="false" onAction="#chackoutbuttononclick" prefHeight="160.0" prefWidth="52.0" text="Chackout" />
+      <Button layoutX="352.0" layoutY="52.0" mnemonicParsing="false" onAction="#chackoutbuttononclick" prefHeight="160.0" prefWidth="52.0" text="Chackout" />
       <TableView fx:id="tableviewfxid" layoutX="61.0" layoutY="223.0" prefHeight="160.0" prefWidth="483.0">
         <columns>
           <TableColumn fx:id="a" prefWidth="75.0" text="Product" />
@@ -31,5 +30,7 @@
             <TableColumn fx:id="f" prefWidth="75.0" text="Tolal amount" />
         </columns>
       </TableView>
+      <Button layoutX="416.0" layoutY="40.0" mnemonicParsing="false" onAction="#savetoB" prefHeight="160.0" prefWidth="77.0" text="Save to b F" />
+      <Button layoutX="500.0" layoutY="40.0" mnemonicParsing="false" onAction="#showfBin" prefHeight="160.0" prefWidth="86.0" text="Show f B File" />
    </children>
 </AnchorPane>
